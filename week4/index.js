@@ -17,4 +17,5 @@ const s = new Sidebar({
   The final result should look like the following:
   <ul><li>Albert Eggstein</li><li>Attila the Hen</li><li>Attila the Hen</li><li>Dixie Chick</li><li>Gregory Peck</li><li>Mary Poopins</li></ul>
 */
+//this command renders everything back into the console for side bar using the variable s it wsa set equal to above.
 console.log(s.render());
