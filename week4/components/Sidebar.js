@@ -15,6 +15,7 @@ class Sidebar extends Component {
     responseHTML += '<li>' + item + '</li>';
     });
     
+    responseHTML += '<ul>' + responseHTML + '</ul>';
     return responseHTML;
   }
 }
