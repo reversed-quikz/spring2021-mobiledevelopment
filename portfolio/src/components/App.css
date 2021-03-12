@@ -1,0 +1,18 @@
+/*This is all my css for the app */
+p{
+    font-size: 30px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+#counter{
+    background-color: lightblue;
+    width: 200px;
+    border-radius: 5px;
+}
+
+body{
+    background-color: bisque;
+}
