@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-import { Text, View} from 'react-native';
+import React, {useState, setState} from 'react';
+import { View, Text} from 'react-native';
 import { Button } from 'react-native-elements';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useState, setState} from 'react';
+
 
 function HomeScreen(props) {
   return (
@@ -62,7 +62,7 @@ render() {
 }
 }
 const Stack = createStackNavigator();
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -73,3 +73,5 @@ export default function App() {
    </NavigationContainer>
   );
 }
+
+export default App;

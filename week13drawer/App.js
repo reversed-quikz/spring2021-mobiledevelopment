@@ -1,21 +1,77 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import { View, Text} from 'react-native';
+import { Button } from 'react-native-elements';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-export default function App() {
+
+function HomeScreen(props) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  <View style={{ flex: 1, alignItems: 'center', 
+  justifyContent: 'center'}}>
+  <Text>Home Screen</Text>
+  <Button 
+    title="Curl Ups"
+    onPress={() => props.navigation.navigate('Curl')}
+  />
+  <Button 
+    title="Laps Swam"
+    onPress={() => props.navigation.navigate('Laps')}
+  />
+  </View>
+  );
+}
+function CurlScreen(props){
+  const [curls, setCurls] = useState(0);
+    return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Curl Ups: {curls}</Text>
+            <Button title="Add Curl Up"
+            onPress={() => setCurls(curls + 1)}/>
+            <Button title="Reset Counter" 
+            onPress={() => setCurls(0)}/>
+            <Button
+        title="Back to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+        </View>
+    );
+}
+class LapsScreen extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+            laps: 0
+        };
+    }
+
+render() {
+    return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Laps Swam: {this.state.laps}</Text>
+            <Button title="Increase Lap"
+            onPress={() => this.setState({laps: this.state.laps + 1})}/>
+            <Button title="Reset Laps" onPress={() => this.setState({laps: 0})}/>
+            <Button
+        title="Back to Home"
+        onPress={() => this.props.navigation.navigate('Home')}
+      />
+        </View>
+    );
+}
+}
+const Drawer = createDrawerNavigator();
+function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home"component={HomeScreen}/>
+        <Drawer.Screen name="Curl" component={CurlScreen}/>
+        <Drawer.Screen name="Laps" component={LapsScreen}/>
+      </Drawer.Navigator>
+   </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
