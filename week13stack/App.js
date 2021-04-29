@@ -19,6 +19,18 @@ function HomeScreen(props) {
     title="Laps Swam"
     onPress={() => props.navigation.navigate('Laps')}
   />
+    <Button 
+    title="Push Ups"
+    onPress={() => props.navigation.navigate('PushUp')}
+  />
+  <Button 
+    title="Sit Ups"
+    onPress={() => props.navigation.navigate('SitUp')}
+  />
+  <Button 
+    title="Jumping Jacks"
+    onPress={() => props.navigation.navigate('JumpingJack')}
+  />
   </View>
   );
 }
@@ -38,6 +50,57 @@ function CurlScreen(props){
         </View>
     );
 }
+function PushUpScreen(props){
+  const [pushup, setPushups] = useState(0);
+    return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Push Ups: {pushup}</Text>
+            <Button title="Add Push Up"
+            onPress={() => setPushups(pushup + 1)}/>
+            <Button title="Reset Counter" 
+            onPress={() => setPushups(0)}/>
+            <Button
+        title="Back to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+        </View>
+    );
+}
+
+function SitUpScreen(props){
+  const [situp, setSitups] = useState(0);
+    return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Sit Ups: {situp}</Text>
+            <Button title="Add Sit Up"
+            onPress={() => setSitups(situp + 1)}/>
+            <Button title="Reset Counter" 
+            onPress={() => setSitups(0)}/>
+            <Button
+        title="Back to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+        </View>
+    );
+}
+
+function JumpingJackScreen(props){
+  const [jj, setJJs] = useState(0);
+    return(
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Jumping Jacks: {jj}</Text>
+            <Button title="Add Rep"
+            onPress={() => setJJs(jj + 1)}/>
+            <Button title="Reset Counter" 
+            onPress={() => setJJs(0)}/>
+            <Button
+        title="Back to Home"
+        onPress={() => props.navigation.navigate('Home')}
+      />
+        </View>
+    );
+}
+
 class LapsScreen extends React.Component {
       constructor(props) {
         super(props);
@@ -69,6 +132,9 @@ function App() {
         <Stack.Screen name="Home"component={HomeScreen}/>
         <Stack.Screen name="Curl" component={CurlScreen}/>
         <Stack.Screen name="Laps" component={LapsScreen}/>
+        <Stack.Screen name="PushUp"component={PushUpScreen}/>
+        <Stack.Screen name="SitUp" component={SitUpScreen}/>
+        <Stack.Screen name="JumpingJack" component={JumpingJackScreen}/>
       </Stack.Navigator>
    </NavigationContainer>
   );
